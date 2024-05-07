@@ -10,7 +10,7 @@
 #SBATCH --exclusive
 #SBATCH --output=%x.out
 
-TRAINING_PATH=/user/c.stylianou/u11227
+TRAINING_PATH=/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch
 CHECKPOINTS_PATH=$TRAINING_PATH/gpt-fast-checkpoints
 
 module load anaconda3/2020.11
