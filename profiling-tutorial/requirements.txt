@@ -1,0 +1,9 @@
+wheel
+torch
+torchvision
+torchmetrics
+matplotlib
+jupyter
+torch-tb-profiler @ git+https://github.com/pytorch/kineto#subdirectory=tb_plugin
+urllib3<2  # because of legacy ssl on Emmy Python/3.9.16
+protobuf==4.25.3  # because of an issue in Tensorboard
