@@ -1,0 +1,6 @@
+wheel
+torch
+torchvision
+torchmetrics
+matplotlib
+sentencepiece
