@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --time 02:00:00
+#SBATCH --gpus 1
+#SBATCH --partition grete:shared
+
+# Choose random port and print instructions to connect
+PORT=`shuf -i 5000-5999 -n 1`
+LOGIN_HOST="glogin.hlrn.de"
+BATCH_HOST=$(hostname)
+ 
+echo "To connect to the notebook type the following command into your local terminal:"
+echo "ssh -N -J ${USER}@${LOGIN_HOST} ${USER}@${BATCH_HOST} -L ${PORT}:localhost:${PORT}"
+echo
+echo "After connection is established in your local browser go to the address:"
+echo "http://localhost:${PORT}"
+
+source activate.sh
+
+jupyter notebook --no-browser --port $PORT
