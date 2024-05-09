@@ -1,30 +1,27 @@
 ## Environment Setup
 
-### Download Repo and Setup Paths
+### Connecting to the System
+```sh
+# Connect to GWDG
+$ ssh –i /path/to/ssh-key <username>@glogin-p3.hpc.gwdg.de
+```
+
+### Download Repo
 ```sh
 $ cd $HOME
 $ git clone https://github.com/CaSToRC-CyI/isc2024-tutorial.git
 ```
 
-### Initialise Conda
+### Setup Paths and Activate Environment
 ```sh
-# Project Path Containing weights
-$ export PROJ_PATH=/user/c.stylianou/u11227
-# Check we can see the correct directories
-$ ls $PROJ_PATH/gpt-fast-checkpoints
-  meta-llama
-# Setup conda and activate environment
-$ module load anaconda3/2020.11
-$ conda init
-$ source ~/.bashrc
-```
-
-### Installing PyTorch
-```sh
-$ conda create -n torch python=3.11 -y
-$ conda activate torch
-$ pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-$ pip install sentencepiece matplotlib
+# Shared Project path
+$ export SHARED_PATH=/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch
+# Checkpoints contain the Llama2 7B weights
+$ ls $SHARED_PATH/gpt-fast
+  gpt-fast gpt-fast-checkpoints
+# Activate environment - Needed for generating plots
+$ module load python/3.9.16
+$ source $SHARED_PATH/torch/bin/activate
 ```
 
 ## Running the Baseline Version
