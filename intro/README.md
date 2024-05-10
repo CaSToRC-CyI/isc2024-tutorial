@@ -129,7 +129,7 @@ salloc --reservation=isc2024genai --partition=grete:shared -N 1 -G A100:1
 ```
 The terminal session could look something like:
 ```console
-glogin10:~ $ salloc --partition=grete:shared -N 1 -G A100:1
+glogin10:~ $ salloc --reservation=isc2024genai --partition=grete:shared -N 1 -G A100:1
 salloc: Granted job allocation 5699498
 salloc: Waiting for resource configuration
 salloc: Nodes ggpu123 are ready for job
