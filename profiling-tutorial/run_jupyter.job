@@ -8,7 +8,7 @@ SHARED_SCRIPT_PATH="/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/is
 
 # Load the shared venv
 module load python/3.9.16
-source $SHARED_SCRIPT_PATH/activate.sh
+source $SHARED_SCRIPT_PATH/venv/bin/activate
 
 # Choose random ports
 read PORT1 PORT2 <<< $(shuf -i 5000-5999 -n 2 | tr '\n' ' ')
