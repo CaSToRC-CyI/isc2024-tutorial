@@ -16,8 +16,6 @@ tensorboard --logdir /mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/i
 jupyter notebook --no-browser --port $PORT1 &
 sleep 5
 
-#!/bin/bash
-
 # Define the file path
 file="/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial/profiling-tutorial/slurm_output/$USER-${SLURM_JOBID}.out"
 
@@ -25,18 +23,15 @@ file="/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial
 address1=$(grep -o 'ServerApp] http://localhost:[0-9]\+/tree?token=[a-zA-Z0-9]\+' "$file" | awk '{print $2}')
 address2=$(grep -o 'TensorBoard [0-9.]\+ at http://localhost:[0-9]\+/[^ ]*' "$file" | awk '{print $4}')
 
-# Extract the first localhost URL
-#localhost_url1=$(grep -o 'http://localhost:[0-9]\{4\}/.*' "$file_path" | sed -e 's/ (Press CTRL+C to quit)//')
-# Extract the second localhost URL
-#localhost_url2=$(grep -o 'TensorBoard [0-9.]* at http://localhost:[0-9]\{4\}/' "$file_path" | sed -e 's/TensorBoard [0-9.]* at //')
+OUTPUT_FILE="$HOME/connection_instructions.txt"
 
-echo "##################################################################################################" > $HOME/output.txt
-echo "To connect to the notebook type the following command into your local terminal:" >> $HOME/output.txt
-echo "ssh -N -J ${USER}@${LOGIN_HOST} ${USER}@${BATCH_HOST} -L ${PORT1}:localhost:${PORT1} -L ${PORT2}:localhost:${PORT2}" >> $HOME/output.txt
-echo "" >> $HOME/output.txt
-echo "After connection is established in your local browser go to the addresses:" >> $HOME/output.txt
-echo "Jupyter notebooks: ${address1}" >> $HOME/output.txt
-echo "Tensorboard: ${address2}" >> $HOME/output.txt
-echo "##################################################################################################" >> $HOME/output.txt
+echo "##################################################################################################" > "$OUTPUT_FILE"
+echo "To connect to the notebook type the following command into your local terminal:" >> "$OUTPUT_FILE"
+echo "ssh -N -J ${USER}@${LOGIN_HOST} ${USER}@${BATCH_HOST} -L ${PORT1}:localhost:${PORT1} -L ${PORT2}:localhost:${PORT2}" >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+echo "After the connection is established in your local browser, go to the following addresses:" >> "$OUTPUT_FILE"
+echo "Jupyter notebooks: ${address1}" >> "$OUTPUT_FILE"
+echo "Tensorboard: ${address2}" >> "$OUTPUT_FILE"
+echo "##################################################################################################" >> "$OUTPUT_FILE"
 
 sleep infinity
