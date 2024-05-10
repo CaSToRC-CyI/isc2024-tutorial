@@ -9,14 +9,14 @@ git clone https://github.com/CaSToRC-CyI/isc2024-tutorial.git --depth=1
 ```
 Go to the folder of the tutorial:
 ```
-glogin8:~ $ cd isc2024-tutorial/profiling-tutorial/
+cd isc2024-tutorial/profiling-tutorial/
 ```
 Then, submit a job to launch the Jupyter notebook and Tensorboard servers:  
 ```
 sbatch run_jupyter.job
 ```
 
-Check that the job is running on a node; i.e. `STATE` must be `RUNNING`:
+Check that the job is running on a node with `squeue -u $USER`; i.e. `STATE` must be `RUNNING`:
 ```
 glogin8:~/isc2024-tutorial/profiling-tutorial $ squeue -u $USER
              JOBID    PARTITION         NAME     USER  ACCOUNT     STATE       TIME NODES NODELIST(REASON)
@@ -42,9 +42,9 @@ Tensorboard: http://localhost:5151/
 Then, open a new local terminal, and follow the connection instructions from the output file.
 I.e., first:
 ```
-<local-laptop> $ ssh -N -J u11229@glogin.hlrn.de u11229@ggpu201 -L 5626:localhost:5626 -L 5151:localhost:5151
+ssh -N -J u11229@glogin.hlrn.de u11229@ggpu201 -L 5626:localhost:5626 -L 5151:localhost:5151
 ```
-Then in your previous terminal, click on the links (on linux Ctrl+Leftmouse) or copy the URL's to your browser.
+Then in your previous terminal (on the cluster), click on the links (on linux Ctrl+LeftMouse) or copy the URL's to your browser.
 
 In your browser, you should see two tabs open; one for the Jupyter notebook, and one for Tensorboard:
 ![image](https://github.com/CaSToRC-CyI/isc2024-tutorial/assets/5969044/96d6b396-2d08-45b8-84ed-a5ccfb737b38)
