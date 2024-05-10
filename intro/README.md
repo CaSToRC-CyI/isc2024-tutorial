@@ -8,19 +8,19 @@ The [OpenSSH client](https://www.openssh.com/) is usually already installed. To 
 ssh -V
 ```
 If it prints something like `OpenSSH_8.9p1 [...]`, it is already installed. Otherwise, use your package manager to install it:
-##### `Ubuntu and Debian`
+#### Ubuntu and Debian
 ```console
 sudo apt install openssh-client
 ```
-##### `Fedora and RHEL/Rockylinux/Almalinux 8+`
+#### Fedora and RHEL/Rockylinux/Almalinux 8+
 ```console
 sudo dnf install openssh-clients
 ```
-##### `RHEL/CentOS/SL 7`
+#### RHEL/CentOS/SL 7
 ```console
 sudo yum install openssh-clients
 ```
-##### `Arch`
+#### Arch
 ```console
 sudo pacman -S openssh
 ```
@@ -49,17 +49,17 @@ Then confirm that it works with `ssh --version` or `ssh -V`.
 ## Configuring SSH
 ### Config file location
 The OpenSSH configuration file is a plain text file that defines Hosts with short, easy to type names and corresponding full DNS names (or IPs) and advanced configuration options, which private key to use, etc. It is usually located in your home directory or user profile directory under `.ssh/config`. ***If you do not find such a file or directory, create them manually*** (the `config` file  has no extension). The directory and the file for different OSs are shown below:
-##### Linux
+#### Linux
 ```console
 ~/.ssh/config
 /home/$USERNAME/.ssh/config
 ```
-##### MacOS
+#### MacOS
 ```console
 ~/.ssh/config
 /User/$USERNAME/.ssh/config
 ```
-##### Windows
+#### Windows
 ```
 %USERPROFILE%\.ssh\config
 C:\Users\your_username\.ssh\config
