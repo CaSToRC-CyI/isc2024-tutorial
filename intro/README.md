@@ -124,9 +124,8 @@ git clone https://github.com/CaSToRC-CyI/isc2024-tutorial.git
 
 ## Allocating a computing node from the NHR Grete cluster
 To allocate a computing node, execute the following command:
-<!-- salloc --reservation=<RES_NAME> --partition=grete:shared -N 1 -G A100:1 -->
 ```console
-salloc --partition=grete:shared -N 1 -G A100:1
+salloc --reservation=isc2024genai --partition=grete:shared -N 1 -G A100:1
 ```
 The terminal session could look something like:
 ```console
