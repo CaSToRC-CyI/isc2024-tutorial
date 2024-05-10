@@ -39,7 +39,7 @@ Tensorboard: http://localhost:5151/
 ##################################################################################################
 ```
 
-Then, open a new local terminal, and follow the connection instructions from the output file.
+Then, open a new *local* terminal, and follow the connection instructions from the output file.
 I.e., first:
 ```
 ssh -N -J u11229@glogin.hlrn.de u11229@ggpu201 -L 5626:localhost:5626 -L 5151:localhost:5151
