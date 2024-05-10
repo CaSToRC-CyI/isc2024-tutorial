@@ -48,7 +48,8 @@ Then confirm that it works with `ssh --version` or `ssh -V`.
 
 ## Configuring SSH
 ### Config file location
-The OpenSSH configuration file is a plain text file that defines Hosts with short, easy to type names and corresponding full DNS names (or IPs) and advanced configuration options, which private key to use, etc. It is usually located in your home directory or user profile directory under `.ssh/config`. ***If you do not find such a file or directory, create them manually*** (the `config` file  has no extension). The directory and the file for different OSs are shown below:
+The OpenSSH configuration file is a plain text file that defines Hosts with short, easy to type names and corresponding full DNS names (or IPs) and advanced configuration options, which private key to use, etc. It is usually located in your home directory or user profile directory under `.ssh/config`. ***If you do not find such a file or directory, create them manually*** (the `config` file  has no extension).  
+The directory and the file for different OSs are shown below:
 #### Linux
 ```console
 ~/.ssh/config
@@ -65,7 +66,9 @@ The OpenSSH configuration file is a plain text file that defines Hosts with shor
 C:\Users\your_username\.ssh\config
 ```
 ### SSH key
-To set up your SSH key, first download it from [here](https://owncloud.gwdg.de/index.php/s/2Ewlpc26GZujGC0) using the provided download password. The key consists of two files: a private key named `id_XXXX` and a public key named `id_XXXX.pub`. You will also receive a key password, which you'll need when prompted for your passphrase in the terminal. Finally, put the provided public and private SSH keys in the `.ssh/config` directory.
+To set up your SSH key, first download it from [here](https://owncloud.gwdg.de/index.php/s/2Ewlpc26GZujGC0) using the provided `download_password`.  
+In the shared space, you'll find multiple keys. You'll need to download two specific files named according to your provided key names, such as `id_XXXX` and its corresponding `id_XXXX.pub` file. Replace `XXXX` with the unique identifier provided for your key. You will also receive a key password, which you'll need when prompted for your passphrase in the terminal.  
+Finally, put the provided public and private SSH keys in the `.ssh/config` directory.
 ### Config file contents
 Now, edit the config file as shown below:
 ```
@@ -120,38 +123,25 @@ git clone https://github.com/CaSToRC-CyI/isc2024-tutorial.git
 
 
 ## Allocating a computing node from the NHR Grete cluster
-To view the available computing nodes, execute the following command:
+To allocate a computing node, execute the following command:
+<!-- salloc --reservation=<RES_NAME> --partition=grete:shared -N 1 -G A100:1 -->
 ```console
-sacctmgr list clusters
-```
-The output should look similar to the example below, where the name of the available node is `ghlrn4`:
-```console
-   Cluster     ControlHost  ControlPort   RPC     Share GrpJobs       GrpTRES GrpSubmit MaxJobs       MaxTRES MaxSubmit     MaxWall                  QOS   Def QOS
----------- --------------- ------------ ----- --------- ------- ------------- --------- ------- ------------- --------- ----------- -------------------- ---------
-    ghlrn4   10.241.201.73         6817 10240
-
-```
-To allocate this computing node, execute the following command:
-```console
-salloc --clusters=ghlrn4 -N -1
+salloc --partition=grete:shared -N 1 -G A100:1
 ```
 The terminal session could look something like:
 ```console
-glogin10:~ $ salloc --clusters=ghlrn4 -N -1
-salloc: Pending job allocation 5698241
-salloc: job 5698241 queued and waiting for resources
-salloc: job 5698241 has been allocated resources
-salloc: Granted job allocation 5698241
+glogin10:~ $ salloc --partition=grete:shared -N 1 -G A100:1
+salloc: Granted job allocation 5699498
 salloc: Waiting for resource configuration
-salloc: Nodes gcn1234 are ready for job
-gcn1234:~ $
+salloc: Nodes ggpu123 are ready for job
+ggpu123:~ $
 ```
-In this case, `gcn1234` is the name of your allocated computing node, which will be required for building the SSH tunnel.
+In this case, `ggpu123` is the name of your allocated computing node, which will be required for building the SSH tunnel.
 
 
 ## Activate the virtual environment
 The virtual environment `introenv` is already created in the shared space `/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/`.  
-To activate the virtual environment execute the following command: 
+To activate the virtual environment execute the following command:
 ```console
 source /mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/introenv/bin/activate
 ```
@@ -170,10 +160,10 @@ Setting the `--ip` option to `0.0.0.0` means that the server will listen on all 
 
 The terminal session could look something like:
 ```console
-(introenv) gcn1234:~/isc2024-tutorial/intro $ jupyter notebook --ip=0.0.0.0 --no-browser
+(introenv) ggpu123:~/isc2024-tutorial/intro $ jupyter notebook --ip=0.0.0.0 --no-browser
 [I 01:43:42.949 NotebookApp] Serving notebooks from local directory: /home/your_username/uXXXXXX/isc2024-tutorial/intro
 [I 01:43:42.950 NotebookApp] Jupyter Notebook 6.4.10 is running at:
-[I 01:43:42.950 NotebookApp] http://gcn1234:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
+[I 01:43:42.950 NotebookApp] http://ggpu123:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
 [I 01:43:42.950 NotebookApp]  or http://127.0.0.1:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
 [I 01:43:42.950 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 [C 01:43:42.961 NotebookApp]
@@ -181,7 +171,7 @@ The terminal session could look something like:
     To access the notebook, open this file in a browser:
         file:///home/your_username/uXXXXXX/.local/share/jupyter/runtime/nbserver-603528-open.html
     Or copy and paste one of these URLs:
-        http://gcn1234:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
+        http://ggpu123:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
      or http://127.0.0.1:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
 
 ```
@@ -193,14 +183,14 @@ Open a new terminal and execute the following command (you'll be prompted to ent
 ```console
 ssh -v Grete -N -L <port_number>:<node_id>:<port_number>
 ```
-Ensure that the port number matches the one from the previous step (e.g., `8888`) and the node ID corresponds to the name of the computing node (e.g., `gcn1234`).
+Ensure that the port number matches the one from the previous step (e.g., `8888`) and the node ID corresponds to the name of the computing node (e.g., `ggpu123`).
 
 
 ## Visualize the notebook in your local browser
 Open your web browser and paste the copied URL starting with `http://127.0.0.1:8888`. Press Enter. You should see the Jupyter Notebook opened in the directory you navigated to, `isc2024-tutorial/intro/`.  
 Open and run the `Intro_Notebook.ipynb`. It is expected to display information similar to the following:
 ```console
-posix.uname_result(sysname='Linux', nodename='gcn1234', release='3.10.0-1160.95.1.el7.x86_64', version='#1 SMP Mon Jul 24 13:59:37 UTC 2023', machine='x86_64')
+posix.uname_result(sysname='Linux', nodename='ggpu123', release='3.10.0-1160.95.1.el7.x86_64', version='#1 SMP Mon Jul 24 13:59:37 UTC 2023', machine='x86_64')
 ```
 
 
