@@ -4,25 +4,27 @@
 #SBATCH --partition grete:shared
 #SBATCH --output=/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial/profiling-tutorial/slurm_output/%u-%j.out
 
-# Choose random port and print instructions to connect
-PORT1=`shuf -i 5000-5999 -n 1`
-PORT2=`shuf -i 5000-5999 -n 1`
-LOGIN_HOST="glogin.hlrn.de"
-BATCH_HOST=$(hostname)
- 
-source activate.sh
+SHARED_SCRIPT_PATH="/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial/profiling-tutorial"
 
-tensorboard --logdir /mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial/profiling-tutorial/logs --port $PORT2 &
+# Load the shared venv
+source $SHARED_SCRIPT_PATH/activate.sh
+
+# Choose random ports
+read PORT1 PORT2 <<< $(shuf -i 5000-5999 -n 2 | tr '\n' ' ')
+
 jupyter notebook --no-browser --port $PORT1 &
-sleep 5
+tensorboard --logdir ./logs --port $PORT2 &
+sleep 10
 
 # Define the file path
-file="/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial/profiling-tutorial/slurm_output/$USER-${SLURM_JOBID}.out"
+file="$SHARED_SCRIPT_PATH/slurm_output/$USER-${SLURM_JOBID}.out"
 
 # Extract addresses using grep and regex patterns
 address1=$(grep -o 'ServerApp] http://localhost:[0-9]\+/tree?token=[a-zA-Z0-9]\+' "$file" | awk '{print $2}')
 address2=$(grep -o 'TensorBoard [0-9.]\+ at http://localhost:[0-9]\+/[^ ]*' "$file" | awk '{print $4}')
 
+LOGIN_HOST="glogin-gpu.hpc.gwdg.de"
+BATCH_HOST=$(hostname)
 OUTPUT_FILE="$HOME/connection_instructions.txt"
 
 echo "##################################################################################################" > "$OUTPUT_FILE"
