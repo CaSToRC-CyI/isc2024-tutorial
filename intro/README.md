@@ -1,5 +1,5 @@
 # Setting Up Environment for Accelerating Generative AI with PyTorch
-Use the information provided here to get started with using the HPC clusters at GWDG.
+Use the information provided here to get started with using the [HPC clusters at GWDG](https://docs.hpc.gwdg.de).
 
 ## Installing SSH Client
 ### Linux
@@ -65,7 +65,7 @@ The OpenSSH configuration file is a plain text file that defines Hosts with shor
 C:\Users\your_username\.ssh\config
 ```
 ### SSH key
-To set up your SSH key, first download it from [here](https://owncloud.gwdg.de/index.php/f/2885857924) using the provided download password. The key consists of two files: a private key named `id_XXXX` and a public key named `id_XXXX.pub`. You will also receive a key password, which you'll need when prompted for your passphrase in the terminal. Finally, put the provided public and private SSH keys in the `.ssh/config` directory.
+To set up your SSH key, first download it from [here](https://owncloud.gwdg.de/index.php/s/2Ewlpc26GZujGC0) using the provided download password. The key consists of two files: a private key named `id_XXXX` and a public key named `id_XXXX.pub`. You will also receive a key password, which you'll need when prompted for your passphrase in the terminal. Finally, put the provided public and private SSH keys in the `.ssh/config` directory.
 ### Config file contents
 Now, edit the config file as shown below:
 ```
