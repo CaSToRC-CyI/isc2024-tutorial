@@ -191,9 +191,9 @@ Copy and paste the URL starting with `http://127.0.0.1:8888` into your browser a
 ## Build SSH tunnel to visualize the notebook
 Open a new terminal and execute the following command (you'll be prompted to enter your SSH key passphrase):
 ```console
-ssh -v Grete -N -L 8888:gcn1234:8888
+ssh -v Grete -N -L <port_number>:<node_id>:<port_number>
 ```
-Ensure that the port number `8888` matches the one from the previous step, and `gcn1234` is the name of the computing node.
+Ensure that the port number matches the one from the previous step (e.g., `8888`) and the node ID corresponds to the name of the computing node (e.g., `gcn1234`).
 
 
 ## Visualize the notebook in your local browser
