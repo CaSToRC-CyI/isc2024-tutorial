@@ -3,28 +3,32 @@ First, connect to Emmy through ssh:
 ```
 ssh <username>@glogin.hlrn.de`
 ```
+Clone the repository: 
+```
+git clone https://github.com/CaSToRC-CyI/isc2024-tutorial.git --depth=1
+```
 Go to the folder of the tutorial:
 ```
-glogin8:/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial/profiling-tutorial $ sbatch run_jupyter.job
+glogin8:~ $ cd isc2024-tutorial/profiling-tutorial/
 ```
-Then, submit a job to launch the servers:  
+Then, submit a job to launch the Jupyter notebook and Tensorboard servers:  
 ```
 sbatch run_jupyter.job
 ```
 
 Check that the job is running on a node; i.e. `STATE` must be `RUNNING`:
 ```
-glogin8:/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial/profiling-tutorial $ squeue -u $USER
+glogin8:~/isc2024-tutorial/profiling-tutorial $ squeue -u $USER
              JOBID    PARTITION         NAME     USER  ACCOUNT     STATE       TIME NODES NODELIST(REASON)
            5698453 grete:shared run_jupyter.   u11229 isc2024_   RUNNING       0:42     1 ggpu201
 ```
-When it's running, you can check the content of `$HOME/connection_instructions.txt`:
+When it's running, you can check the content of `~/connection_instructions.txt`:
 ```
-cat $HOME/connection_instructions.txt
+cat ~/connection_instructions.txt
 ```
 Which should print something like this:
 ```
-glogin8:/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutorial/profiling-tutorial $ cat $HOME/connection_instructions.txt 
+glogin8:~/isc2024-tutorial/profiling-tutorial $ cat ~/connection_instructions.txt 
 ##################################################################################################
 To connect to the notebook type the following command into your local terminal:
 ssh -N -J u11229@glogin.hlrn.de u11229@ggpu201 -L 5626:localhost:5626 -L 5151:localhost:5151
@@ -38,7 +42,7 @@ Tensorboard: http://localhost:5151/
 Then, open a new local terminal, and follow the connection instructions from the output file.
 I.e., first:
 ```
-ssh -N -J u11229@glogin.hlrn.de u11229@ggpu201 -L 5626:localhost:5626 -L 5151:localhost:5151
+<local-laptop> $ ssh -N -J u11229@glogin.hlrn.de u11229@ggpu201 -L 5626:localhost:5626 -L 5151:localhost:5151
 ```
 Then in your previous terminal, click on the links (on linux Ctrl+Leftmouse) or copy the URL's to your browser.
 
