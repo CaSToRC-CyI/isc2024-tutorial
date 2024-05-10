@@ -149,8 +149,6 @@ gcn1234:~ $
 In this case, `gcn1234` is the name of your allocated computing node, which will be required for building the SSH tunnel.
 
 
-
-
 ## Activate the virtual environment
 The virtual environment `introenv` is already created in the shared space `/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/`.  
 To activate the virtual environment execute the following command: 
