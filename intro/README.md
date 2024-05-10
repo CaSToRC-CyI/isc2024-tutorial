@@ -64,18 +64,18 @@ The OpenSSH configuration file is a plain text file that defines Hosts with shor
 %USERPROFILE%\.ssh\config
 C:\Users\your_username\.ssh\config
 ```
+### SSH key
+To set up your SSH key, first download it from [here](https://owncloud.gwdg.de/index.php/f/2885857924) using the provided download password. The key consists of two files: a private key named `id_XXXX` and a public key named `id_XXXX.pub`. You will also receive a key password, which you'll need when prompted for your passphrase in the terminal. Finally, put the provided public and private SSH keys in the `.ssh/config` directory.
 ### Config file contents
 Now, edit the config file as shown below:
 ```
 Host Grete
 	Hostname glogin-gpu.hpc.gwdg.de
-	User uXXXXX
-	IdentityFile ~/.ssh/id_XXXXX
+	User uXXXXXX
+	IdentityFile ~/.ssh/id_XXXX
 	MACs hmac-sha2-512,hmac-sha2-256,hmac-sha1
 ```
-where the `uXXXXX` is your project username and the `id_XXXXX` is the name of your SSH key.
-### SSH key
-Finally, put the provided public and private SSH keys in this directory (`.ssh/config`).
+where the `uXXXXXX` is your project username and the `id_XXXX` is the name of your SSH key.
 
 
 ## Logging In into an NHR Grete login node
@@ -171,7 +171,7 @@ Setting the `--ip` option to `0.0.0.0` means that the server will listen on all 
 The terminal session could look something like:
 ```console
 (introenv) gcn1234:~/isc2024-tutorial/intro $ jupyter notebook --ip=0.0.0.0 --no-browser
-[I 01:43:42.949 NotebookApp] Serving notebooks from local directory: /home/your_username/uXXXXX/isc2024-tutorial/intro
+[I 01:43:42.949 NotebookApp] Serving notebooks from local directory: /home/your_username/uXXXXXX/isc2024-tutorial/intro
 [I 01:43:42.950 NotebookApp] Jupyter Notebook 6.4.10 is running at:
 [I 01:43:42.950 NotebookApp] http://gcn1234:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
 [I 01:43:42.950 NotebookApp]  or http://127.0.0.1:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
@@ -179,7 +179,7 @@ The terminal session could look something like:
 [C 01:43:42.961 NotebookApp]
 
     To access the notebook, open this file in a browser:
-        file:///home/your_username/uXXXXX/.local/share/jupyter/runtime/nbserver-603528-open.html
+        file:///home/your_username/uXXXXXX/.local/share/jupyter/runtime/nbserver-603528-open.html
     Or copy and paste one of these URLs:
         http://gcn1234:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
      or http://127.0.0.1:8888/?token=a22d1349b8e2b42db09715a27a3c6831f2defe64d10c4db3
