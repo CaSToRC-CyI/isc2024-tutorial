@@ -9,7 +9,7 @@ glogin8:/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch/isc2024-tutori
 ```
 Then, submit a job to launch the servers:  
 ```
-salloc run_jupyter.job
+sbatch run_jupyter.job
 ```
 
 Check that the job is running on a node; i.e. `STATE` must be `RUNNING`:
