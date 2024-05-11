@@ -1,11 +1,12 @@
 ## Environment Setup
 
-### Connecting to the System
+### Connecting to the System with X11 Forwarding
 ```sh
 # Connect to GWDG
 $ ssh -X –i /path/to/ssh-key <username>@glogin-gpu.hpc.gwdg.de
 # Or: ssh -X Grete
 ```
+**Note** For MacOS users, to enable X11 forwarding you will additionally need to install and use [XQuartz](https://www.xquartz.org/). X11 is a mechanism that allows a user to start up remote applications, and then forward the application display to their local Windows machine. To enable this mechanism, during `ssh` you add the `-X` option.
 
 ### Download Repo
 If haven't already downloaded the GitHub repo:
@@ -41,7 +42,13 @@ $ ls gpt-fast-baseline
   gpt-fast-baseline.out
 # Plot the results
 $ python plots/extract_and_plot.py gpt-fast-baseline.out
+$ display combined_plot.jpg # Requires X11 forwarding (ssh -X)
 ```
+**Note** If X11 forwarding not available, you can copy the plot from the server to your local environment. Open a new terminal and copy the file using `scp`:
+```sh
+$ scp Grete:/user/<name>/<username>/isc2024-tutorial/gpt-fast/combined_plot.jpg /local/path/to/download/in
+```
+where name (kursXXX) and username (uXXXXXX) should be displayed on the paper provided at the start of the tutorial.
 
 ## Running the Compiled Version
 ```sh
@@ -58,6 +65,7 @@ $ ls gpt-fast-compile
   gpt-fast-compile.out
 # Plot the results
 $ python plots/extract_and_plot.py gpt-fast-baseline.out gpt-fast-compile.out
+$ display combined_plot.jpg # Requires X11 forwarding (ssh -X)
 ```
 
 ## Running Quantized Version
@@ -75,6 +83,7 @@ $ ls gpt-fast-quantize
   gpt-fast-quantize.out
 # Plot the results
 $ python plots/extract_and_plot.py gpt-fast-baseline.out gpt-fast-compile.out gpt-fast-quantize.out
+$ display combined_plot.jpg # Requires X11 forwarding (ssh -X)
 ```
 
 ## Running Speculative Version
@@ -92,6 +101,7 @@ $ ls gpt-fast-speculative
   gpt-fast-speculative.out
 # Plot the results
 $ python plots/extract_and_plot.py gpt-fast-baseline.out gpt-fast-compile.out gpt-fast-quantize.out gpt-fast-speculative.out
+$ display combined_plot.jpg # Requires X11 forwarding (ssh -X)
 ```
 
 ## Running Tensor Parallelism Version
@@ -109,4 +119,5 @@ $ ls gpt-fast-tp
   gpt-fast-tp.out
 # Plot the results
 $ python plots/extract_and_plot.py gpt-fast-baseline.out gpt-fast-compile.out gpt-fast-quantize.out gpt-fast-speculative.out gpt-fast-tp.out
+$ display combined_plot.jpg # Requires X11 forwarding (ssh -X)
 ```
