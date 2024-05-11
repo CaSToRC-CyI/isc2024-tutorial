@@ -37,6 +37,9 @@ $ sbatch --reservation=isc2024genai scripts/run.baseline.slurm
 $ squeue --user=$USER
   JOBID  PARTITION NAME     USER ST TIME …
   <JOBID>    grete gpt-fast cstyl R 0:01 …
+```
+Once the job completes (takes 2-4 mins) proceed with ploting and displaying the results.
+```sh
 # Look for the output file
 $ ls gpt-fast-baseline
   gpt-fast-baseline.out
@@ -48,7 +51,7 @@ $ display combined_plot.jpg # Requires X11 forwarding (ssh -X)
 ```sh
 $ scp Grete:/user/<name>/<username>/isc2024-tutorial/gpt-fast/combined_plot.jpg /local/path/to/download/in
 ```
-where name (kursXXX) and username (uXXXXXX) should be displayed on the paper provided at the start of the tutorial.
+where name (kursXXX) and username (uXXXXXX) can be found on the paper provided at the start of the tutorial.
 
 ## Running the Compiled Version
 ```sh
