@@ -3,16 +3,19 @@
 ### Connecting to the System
 ```sh
 # Connect to GWDG
-$ ssh –i /path/to/ssh-key <username>@glogin-p3.hpc.gwdg.de
+$ ssh -X –i /path/to/ssh-key <username>@glogin-gpu.hpc.gwdg.de
+# Or: ssh -X Grete
 ```
 
 ### Download Repo
+If haven't already downloaded the GitHub repo:
 ```sh
 $ cd $HOME
 $ git clone https://github.com/CaSToRC-CyI/isc2024-tutorial.git
 ```
 
 ### Setup Paths and Activate Environment
+If you already have an active environment, please start a new terminal session, and activate the following steps to setup the correct environment:
 ```sh
 # Shared Project path
 $ export SHARED_PATH=/mnt/lustre-emmy-ssd/projects/isc2024_accel_genai_pytorch
@@ -27,7 +30,7 @@ $ source $SHARED_PATH/torch/bin/activate
 ## Running the Baseline Version
 ```sh
 $ cd $HOME/isc2024-tutorial/gpt-fast
-$ sbatch scripts/run.baseline.slurm
+$ sbatch --reservation=isc2024genai scripts/run.baseline.slurm
   Submitted batch job <JOBID>
 # Check your job status
 $ squeue --user=$USER
@@ -44,7 +47,7 @@ $ python plots/extract_and_plot.py gpt-fast-baseline.out
 ```sh
 # Go to Code Repository
 $ cd $HOME/isc2024-tutorial/gpt-fast
-$ sbatch scripts/run.compile.slurm
+$ sbatch --reservation=isc2024genai scripts/run.compile.slurm
   Submitted batch job <JOBID>
 # Check your job status
 $ squeue --user=$USER
@@ -61,7 +64,7 @@ $ python plots/extract_and_plot.py gpt-fast-baseline.out gpt-fast-compile.out
 ```sh
 # Go to Code Repository
 $ cd $HOME/isc2024-tutorial/gpt-fast
-$ sbatch scripts/run.quantize.slurm
+$ sbatch --reservation=isc2024genai scripts/run.quantize.slurm
   Submitted batch job <JOBID>
 # Check your job status
 $ squeue --user=$USER
@@ -78,7 +81,7 @@ $ python plots/extract_and_plot.py gpt-fast-baseline.out gpt-fast-compile.out gp
 ```sh
 # Go to Code Repository
 $ cd $HOME/isc2024-tutorial/gpt-fast
-$ sbatch scripts/run.speculative.slurm
+$ sbatch --reservation=isc2024genai scripts/run.speculative.slurm
   Submitted batch job <JOBID>
 # Check your job status
 $ squeue --user=$USER
@@ -95,7 +98,7 @@ $ python plots/extract_and_plot.py gpt-fast-baseline.out gpt-fast-compile.out gp
 ```sh
 # Go to Code Repository
 $ cd $HOME/isc2024-tutorial/gpt-fast
-$ sbatch scripts/run.tp.slurm
+$ sbatch --reservation=isc2024genai scripts/run.tp.slurm
   Submitted batch job <JOBID>
 # Check your job status
 $ squeue --user=$USER
