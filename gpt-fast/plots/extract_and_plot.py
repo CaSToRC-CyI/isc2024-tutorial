@@ -72,22 +72,20 @@ def main():
     # Define a list of colors for each version
     colors = ['blue', 'green', 'red', 'purple', 'orange']
 
-    # Bandwidth plot
-    fig, ax = plt.subplots(figsize=(10, 5))
-    plot_with_percentage(ax, bandwidths, colors, 'Average Bandwidth Achieved (GB/s)', 'Bandwidth (GB/s)', 2200, bandwidths[0])
-    plt.savefig('bandwidth_plot.jpg', format='jpg')
-    plt.close(fig)
+    # Create a figure with three subplots
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 5))
 
-    # Tokens per second plot
-    fig, ax = plt.subplots(figsize=(10, 5))
-    plot_with_percentage(ax, tokens_sec, colors, 'Average Tokens per Second', 'Tokens per Second', 260, tokens_sec[0])
-    plt.savefig('tokens_per_second_plot.jpg', format='jpg')
-    plt.close(fig)
+    # Plot for Memory Used
+    plot_with_percentage(ax1, memories, colors, 'Memory Used (GB)', 'Memory (GB)', 22, memories[0])
 
-    # Memory used plot
-    fig, ax = plt.subplots(figsize=(10, 5))
-    plot_with_percentage(ax, memories, colors, 'Memory Used (GB)', 'Memory (GB)', 22, memories[0])
-    plt.savefig('memory_used_plot.jpg', format='jpg')
+    # Plot for Average Bandwidth Achieved
+    plot_with_percentage(ax2, bandwidths, colors, 'Average Bandwidth Achieved (GB/s)', 'Bandwidth (GB/s)', 2200, bandwidths[0])
+
+    # Plot for Average Tokens per Second
+    plot_with_percentage(ax3, tokens_sec, colors, 'Average Tokens per Second', 'Tokens per Second', 260, tokens_sec[0])
+
+    plt.tight_layout()  # Adjust layout to not overlap subplots
+    plt.savefig('combined_plot.jpg', format='jpg')
     plt.close(fig)
 
 if __name__ == "__main__":
