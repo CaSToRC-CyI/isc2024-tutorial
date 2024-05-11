@@ -13,7 +13,7 @@ cd isc2024-tutorial/profiling-tutorial/
 ```
 Then, submit a job to launch the Jupyter notebook and Tensorboard servers:  
 ```
-sbatch run_jupyter.job
+sbatch --reservation=isc2024genai run_jupyter.job
 ```
 
 Check that the job is running on a node with `squeue -u $USER`; i.e. `STATE` must be `RUNNING`:
