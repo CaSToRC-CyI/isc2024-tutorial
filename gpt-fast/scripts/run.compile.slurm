@@ -7,7 +7,6 @@
 #SBATCH --cpus-per-task=16 
 #SBATCH --partition=grete:shared
 #SBATCH --time=01:00:00
-#SBATCH --exclusive
 #SBATCH --output=%x.out
 
 # Figure out current script path
