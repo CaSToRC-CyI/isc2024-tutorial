@@ -23,8 +23,8 @@ This tutorial, powered by EuroCC 2, aims to equip participants with a comprehens
 | Time Slot     | Topic                                                                                        | Presenter(s)                           |
 | ------------- | -------------------------------------------------------------------------------------------- | -------------------------------------- |
 | 09:00 – 09:30 | Introduction and setup                                                                       | Boris Velichkov                        |
-| 09:30 – 10:15 | PyTorch and Profiling                                                                        | Robert Jan Schlimbach, Boris Velichkov |
-| 10:30 – 11:00 | Efficient Scaling of Machine Learning Models with PyTorch: Distributed Learning              | Charalambos Chrysostomou               |
+| 09:30 – 10:15 | Efficient Scaling of Machine Learning Models with PyTorch: Distributed Learning              | Charalambos Chrysostomou               |
+| 10:30 – 11:00 | PyTorch and Profiling                                                                        | Robert Jan Schlimbach, Boris Velichkov |
 | 11:00 – 11:30 | Coffee Break                                                                                 | N/A                                    |
 | 11:30 - 11:45 | A gentle introduction to LLMs and LLaMa                                                      | Ivan Gentile                           |
 | 11:45 – 12:30 | Optimizing Llama: Enhancing Efficiency and Scalability of Large Language Models with PyTorch | Chris Stylianou                        |
